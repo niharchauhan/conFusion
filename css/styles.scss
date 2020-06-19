@@ -103,3 +103,14 @@ body {
 // Go to package.json and write -  "scss": "node-sass -o css/ css/" -  under scripts
 // It will convert all the .scss to .css files
 // type -  npm run scss - to convert .scss files to .css files
+
+
+// whenever there is a change in scss file, the scss file will automatically be compiled using onchange module
+// To do so install - npm install --save-dev onchange parallelshell@3.0.1 - DO INSTALL 3.0.1 VERSION, OTHER VERSION WON'T WORK!! 
+// Go to package.json and type - "watch:scss": "onchange 'css/*.scss' -- npm run scss" - under scripts
+
+
+// To parallely execute two commands use parallelshell module 
+// installation is aleady done up there, type - "watch:all": "parallelshell 'npm run watch:scss' 'npm run lite'" - under package.json under scripts
+
+// after that, change "start": "npm run lite" to "start": "npm run watch:all"

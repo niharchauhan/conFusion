@@ -8,6 +8,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
+    <!-- the code which is between build:css .. endbuild will be combined -->
+
+    <!-- build:css css/main.css -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
     <!-- npm install font-awesome --save for installing font-awesome -->
@@ -17,6 +20,8 @@
     <!-- ******* -->
 
     <link rel="stylesheet" href="css/styles.css">
+    <!-- endbuild -->
+
     <title>Ristorante Con Fusion</title>
 </head>
 
@@ -432,98 +437,31 @@
         </div>
     </footer>
     <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+    <!-- build:js js/main.js -->
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    
-    <!-- JS code for tooltip -->
-    <!-- <script>
-        $(document).ready(function() {
-            $('[data-toggle="tooltip"]').tooltip();     // whenever there is any attribute of this kind(data-toggle=tooltip), turn on tooltip 
-        })
-    </script> -->
-    <!-- ************** -->
-
-    <!-- JQuery code for carousel controls(play and pause) -->
-    <!-- <script>
-        $(document).ready(function() {
-            $('#mycarousel').carousel({ interval: 2000 });      // set the interval of 2000ms
-            $('#carousel-pause').click(function() {             // on click of pause button pauses the carousel
-                $('#mycarousel').carousel('pause');
-            });
-            $('#carousel-play').click(function() {              // on click of pause button resumes the carousel
-                $('#mycarousel').carousel('cycle');
-            });
-        });
-    </script> -->
-    <!-- **************** -->
-
-    <!-- Functioning of combined PLAY PAUSE Button -->
-    <!-- ALSO INSERT Z-INDEX in CSS FILE for play pause functioning in single button -->
-    <script>
-        $(document).ready(function() {
-        $('#mycarousel').carousel({ interval: 2000 });      // set the interval of 2000ms
-        $('#carouselButton').click(function() {             // on click of button
-            if ($('#carouselButton').children('span').hasClass('fa-pause')) {   // if the button is in pause state
-                $('#mycarousel').carousel('pause');     // the carousel is paused
-                $('#carouselButton').children('span').removeClass('fa-pause');  // remove the class fa-pause
-                $('#carouselButton').children('span').addClass('fa-play');      // add the class fa-play
-            }
-            else if ($('#carouselButton').children('span').hasClass('fa-play')) {
-                $('#mycarousel').carousel('cycle');
-                $('#carouselButton').children('span').removeClass('fa-play');
-                $('#carouselButton').children('span').addClass('fa-pause');
-            }
-        });
-    });
-    </script>
-    <!-- *************** -->
-
-    <!-- onclick of login button toggles login button modal -->
-    <script>
-        $(document).ready(function() {
-            $('#loginButton').click(function() {
-                $('#loginModal').modal('toggle');
-            });
-        });
-    </script>
-    <!-- *************** -->
-
-    <!-- onclick of reserve table button toggles reserve table modal -->
-    <script>
-        $(document).ready(function() {
-            $('#reserveButton').click(function() {
-                $('#reserveModal').modal('toggle');
-            });
-        });
-    </script>
-    <!-- **************** -->
-
-    <!-- onclick of x and cancel button closes the modal -->
-    <script>
-        $(document).ready(function() {
-            $('#dismissButton').click(function() {
-                $('#loginModal').modal('hide');
-            });
-            $('#cancelButton').click(function() {
-                $('#loginModal').modal('hide');
-            });
-        });
-    </script>
-    <!-- *************** -->
-
-    <!-- onclick of x and cancel button closes the modal -->
-    <script>
-        $(document).ready(function() {
-            $('#dismissReserveButton').click(function() {
-                $('#reserveModal').modal('hide');
-            });
-            $('#cancelReserveButton').click(function() {
-                $('#reserveModal').modal('hide');
-            });
-        });
-    </script>
-    <!-- ************** -->
+    <script src="js/scripts.js"></script>
+    <!-- endbuild -->
 </body>
 
 </html>
+
+
+<!-- - npm install --save-dev rimraf - command will clean up the distribution folder -->
+<!-- under package.json, under scripts, add - "clean": "rimraf dist" - -->
+
+<!-- - sudo npm -g install copyfiles - command will help copy files from one folder to another -->
+<!-- under package.json, under scripts, add - "copyfonts": "copyfiles -f node_modules/font-awesome/fonts/* dist/fonts" - to copy all the font file from font-awesome folder to distribution folder -->
+<!-- - npm run copyfonts - run this command, we see dist folder is created and a sub folder fonts that contains all the font-awesome fonts -->
+
+<!-- - npm run clean - ruuning this command will clean up the distribution folder(delete) -->
+
+
+<!-- - sudo npm -g install imagemin-cli --unsafe-perm=true --allow-root - install imagemin-cli to reduce the size of images so that it gets rendered fast with same quality-->
+<!-- under package.json, under scripts, add - "imagemin": "imagemin img/* -o dist/img" - this will copy all the images from img folder to dist/img folder-->
+
+<!-- - npm install --save-dev usemin-cli cssmin uglifyjs htmlmin - install usemin-cli to store all html css js files in a single folder -->
+
+<!-- "usemin": "usemin contactus.html -d dist --htmlmin -o dist/contactus.html && usemin aboutus.html -d dist --htmlmin -o dist/aboutus.html && usemin index.html -d dist --htmlmin -o dist/index.html",
+    "build": "npm run clean && npm run copyfonts && npm run imagemin && npm run usemin" these commands will store all the html css js font-awesome files in dist folder -->
