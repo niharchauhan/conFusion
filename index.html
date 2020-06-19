@@ -27,16 +27,159 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand" href="./index.html"><img src="img/logo.png" height="30" width="41"></a>      <!-- navbar-brand hepls to display the logo or names of the company on navigation bar -->
-            <div class="collapse navbar-collapse" id="Navbar">
+            <div class="collapse navbar-collapse" id="Navbar">      <!-- Navbar will be collapsed for ectra small screen sizes -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home fa-lg"></span> Home</a></li>  <!-- fa-lg for large icons -->
                     <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-list fa-lg"></span> Menu</a></li>
                     <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul>
+
+                <!-- Display of login button on navbar using data-* -->
+                <!-- <span class="navbar-text">
+                    <a data-toggle="modal" data-target="#loginModal">
+                        <span class="fa fa-sign-in"></span> Login
+                    </a>
+                </span> -->
+                <!-- ******************* -->
+
+                <!-- Login button for modal using javascript -->
+                <span class="navbar-text">
+                    <a id="loginButton">
+                        <span class="fa fa-sign-in"></span> Login
+                    </a>
+                </span>
+                <!-- ***************** -->
+
             </div>
         </div>
     </nav>
+
+    <!-- MODALS BOOTSTRAP JS -->
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Login</h4>
+
+                    <!-- Dismiss button using data-* -->
+                    <!-- <button type="button" class="close" data-dismiss="modal">      
+                        &times;    
+                    </button> -->
+                    <!-- ************** -->
+
+                    <button type="button" class="close" id="dismissButton">      <!-- This button when clicked will dismiss the modal from the screen -->
+                        &times;     <!-- &times for x close mark on login modal -->
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group col-sm-4">
+                                    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                                    <input type="email" class="form-control form-control-sm mr-1" id="exampleInputEmail3" placeholder="Enter email">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                <label class="sr-only" for="exampleInputPassword3">Password</label>
+                                <input type="password" class="form-control form-control-sm mr-1" id="exampleInputPassword3" placeholder="Password">
+                            </div>
+                            <div class="col-sm-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                    <label class="form-check-label"> Remember me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <!-- cancel button using data-* -->
+                            <!-- <button type="button" data-dismiss="modal" class="btn btn-secondary btn-sm ml-auto">Cancel</button> -->
+                            <!-- *************** -->
+                            
+                            <!-- cancel button using javascript -->
+                            <button type="button" id="cancelButton" class="btn btn-secondary btn-sm ml-auto">Cancel</button>
+                            <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>    
+                            <!-- ************** -->    
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- **************** -->
+
+    <!-- MODAL FOR RESERVE TABLE -->
+    <div id="reserveModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-lg" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Reserve a Table</h4>
+                    <!-- dismiss button using data-* -->
+                    <!-- <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button> -->
+                    <!-- *********** -->
+
+                    <!-- Dismiss button using javascript -->
+                    <button type="button" class="close" id="dismissReserveButton">
+                        &times;
+                    </button>
+                    <!-- ************* -->
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                            <div class="form-group row">
+                                <label for="noofguests" class="col-12 col-md-2 col-form-label">Number of Guests</label>
+                                <div class="col-12 col-md-6">
+                                    <label class="radio-inline"><input type="radio" name="guestcount"> 1&nbsp&nbsp</label>
+                                    <label class="radio-inline"><input type="radio" name="guestcount"> 2&nbsp&nbsp</label>
+                                    <label class="radio-inline"><input type="radio" name="guestcount"> 3&nbsp&nbsp</label>
+                                    <label class="radio-inline"><input type="radio" name="guestcount"> 4&nbsp&nbsp</label>
+                                    <label class="radio-inline"><input type="radio" name="guestcount"> 5&nbsp&nbsp</label>
+                                    <label class="radio-inline"><input type="radio" name="guestcount"> 6&nbsp&nbsp</label>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group row">
+                                <label for="sec" class="col-12 col-sm-2 col-form-label">Section</label>
+                                <div class="col-12 col-sm-6 btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label class="btn btn-success active"><input type="radio" name="sect1" autocomplete="off" checked> Non-Smoking</label>
+                                    <label class="btn btn-danger"><input type="radio" name="sec1" autocomplete="off"> Smoking</label>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group row">
+                                <label for="dateandtime" class="col-12 col-sm-2 col-form-label">Date and Time</label>
+                                <div class="col-12 col-sm-4">
+                                    <input type="text" class="form-control" id="tabledate" name="tabledate" placeholder="Date">
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <input type="text" class="form-control" id="tabletime" name="tabletime" placeholder="Time">
+                                </div>
+                            </div>  
+                        
+                            <div class="form-group row">
+                                <div class="offset-sm-2 col-sm-10">
+                                    <!-- cancel button using data-* -->
+                                    <!-- <button type="submit" class="btn btn-secondary" data-dismiss="modal">Cancel</button> -->
+                                    <!-- ************ -->
+
+                                    <!-- cancel button using javascript -->
+                                    <button type="button" class="btn btn-secondary" id="cancelReserveButton">Cancel</button>
+                                    <!-- *********** -->
+
+                                    <button type="submit" class="btn btn-primary">Reserve</button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- *************************** -->
 
     <header class="jumbotron">
         <div class="container">
@@ -53,17 +196,99 @@
 
                 <!-- Reserve table button -->
                 <div class="col-12 col-sm align-self-center">
-                    <a href="#reserveid" class="btn btn-warning btn-block btn-lg" type="button">Reserve Table</a>
+                    <!-- Also added a tooltip -->
+                    <!-- <a href="#reserveid" class="btn btn-warning btn-block nav-link" data-toggle="tooltip" data-html="true" title="Or Call us at <br><strong>+852 12345678</strong>" data-placement="bottom" type="button">Reserve Table</a>      data-html = true means the content can be styled using html -->
+                    <!-- *********** -->
+
+                    <!-- Reserve table button for modal using data-* -->
+                    <!-- <a class="btn btn-warning btn-block nav-link" type="button" data-toggle="modal" data-target="#reserveModal">Reserve Table</a> -->
+                    <!-- ***************** -->
+
+                    <!-- Reserve table button for modal using javascript -->
+                    <a class="btn btn-warning btn-block nav-link" type="button" id="reserveButton">Reserve Table</a>
+                    <!-- ************* -->
+
                 </div>
                 <!-- ************* -->
             </div>
         </div>
     </header>
-
+    
     <div class="container">
+
+        <!-- CAROUSEL BOOTSTRAP -->
+        <div class="row row-content">
+            <div class="col">
+                <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid" src="img/uthappizza.png" alt="uthappizza">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Uthappizza <span class="badge badge-danger">HOT</span> <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                <p>A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="img/buffet.png" alt="buffet">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Weekend Grand Buffet <span class="badge badge-danger">NEW</span></h2>
+                                <p>Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person </p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="img/alberto.png" alt="alberto">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h2>Alberto Somayya</h2>
+                                <h4>Executive Chef</h4>
+                                <p>Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Indicators at the bottom - - - type -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#mycarousel" data-slide-to="1"></li>
+                        <li data-target="#mycarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- ************** -->
+
+                    <!-- next and previous arrows -->
+                    <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <!-- **************** -->
+
+                    <!-- PLAY and PAUSE button at bottom of carousel -->
+                    <!-- <div class="btn-group" id="carouselButton">
+                        <button class="btn btn-danger btn-sm" id="carousel-pause">
+                            <span class="fa fa-pause"></span>
+                        </button>
+                        <button class="btn btn-danger btn-small" id="carousel-play">
+                            <span class="fa fa-play"></span>
+                        </button>
+                    </div> -->
+                    <!-- ************************ -->
+
+                    <!-- Combined PLAY PAUSE BUTTON CAROUSEL -->
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <span class="fa fa-pause"></span>
+                    </button>
+                    <!-- *************** -->
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ****************** -->
+
         <div class="row row-content align-items-center">    <!--row class is defined by bootstrap, row-content is custom class, align-items-center predefined - aligns items to center-->
             <!-- for order, this will be on the right side of screen-->
-            <div class="col-12 col-sm-4 order-sm-last col-md-3">  <!--for extra small, it will occupy entire row; for small it will occupy 4 columns in the row; for medium to extra large it will occupy 3 columns in the row-->
+            <div class="col-12 col-sm-4 order-sm-last col-md-3">  <!--for extra small, it will occupy entire row; for small it will occupy 4 columns in the row; for medium to extra large it will occupy 3 columns in the row -->
                 <h3>Our Lipsmacking Culinary Creations</h3>
             </div>
             <!-- this will be on the left of screen-->
@@ -122,7 +347,7 @@
         </div>
 
         <!-- Reserve a table card form -->
-        <div class="row row-content" id="reserveid">
+        <!-- <div class="row row-content" id="reserveid">
             <div class="col-12 col-sm-8 offset-sm-2">
                 <form>
                     <div class="card">
@@ -159,7 +384,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> -->
         <!-- ************ -->
     </div>
 
@@ -210,6 +435,95 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <!-- JS code for tooltip -->
+    <!-- <script>
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();     // whenever there is any attribute of this kind(data-toggle=tooltip), turn on tooltip 
+        })
+    </script> -->
+    <!-- ************** -->
+
+    <!-- JQuery code for carousel controls(play and pause) -->
+    <!-- <script>
+        $(document).ready(function() {
+            $('#mycarousel').carousel({ interval: 2000 });      // set the interval of 2000ms
+            $('#carousel-pause').click(function() {             // on click of pause button pauses the carousel
+                $('#mycarousel').carousel('pause');
+            });
+            $('#carousel-play').click(function() {              // on click of pause button resumes the carousel
+                $('#mycarousel').carousel('cycle');
+            });
+        });
+    </script> -->
+    <!-- **************** -->
+
+    <!-- Functioning of combined PLAY PAUSE Button -->
+    <!-- ALSO INSERT Z-INDEX in CSS FILE for play pause functioning in single button -->
+    <script>
+        $(document).ready(function() {
+        $('#mycarousel').carousel({ interval: 2000 });      // set the interval of 2000ms
+        $('#carouselButton').click(function() {             // on click of button
+            if ($('#carouselButton').children('span').hasClass('fa-pause')) {   // if the button is in pause state
+                $('#mycarousel').carousel('pause');     // the carousel is paused
+                $('#carouselButton').children('span').removeClass('fa-pause');  // remove the class fa-pause
+                $('#carouselButton').children('span').addClass('fa-play');      // add the class fa-play
+            }
+            else if ($('#carouselButton').children('span').hasClass('fa-play')) {
+                $('#mycarousel').carousel('cycle');
+                $('#carouselButton').children('span').removeClass('fa-play');
+                $('#carouselButton').children('span').addClass('fa-pause');
+            }
+        });
+    });
+    </script>
+    <!-- *************** -->
+
+    <!-- onclick of login button toggles login button modal -->
+    <script>
+        $(document).ready(function() {
+            $('#loginButton').click(function() {
+                $('#loginModal').modal('toggle');
+            });
+        });
+    </script>
+    <!-- *************** -->
+
+    <!-- onclick of reserve table button toggles reserve table modal -->
+    <script>
+        $(document).ready(function() {
+            $('#reserveButton').click(function() {
+                $('#reserveModal').modal('toggle');
+            });
+        });
+    </script>
+    <!-- **************** -->
+
+    <!-- onclick of x and cancel button closes the modal -->
+    <script>
+        $(document).ready(function() {
+            $('#dismissButton').click(function() {
+                $('#loginModal').modal('hide');
+            });
+            $('#cancelButton').click(function() {
+                $('#loginModal').modal('hide');
+            });
+        });
+    </script>
+    <!-- *************** -->
+
+    <!-- onclick of x and cancel button closes the modal -->
+    <script>
+        $(document).ready(function() {
+            $('#dismissReserveButton').click(function() {
+                $('#reserveModal').modal('hide');
+            });
+            $('#cancelReserveButton').click(function() {
+                $('#reserveModal').modal('hide');
+            });
+        });
+    </script>
+    <!-- ************** -->
 </body>
 
 </html>
